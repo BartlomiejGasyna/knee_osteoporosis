@@ -1,0 +1,52 @@
+# Add standard ignores for a machine learning deployment project
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# Data files
+data/
+*.csv
+*.tsv
+*.json
+*.h5
+*.pkl
+*.zip
+
+# Model files
+model/
+*.h5
+*.pkl
+
+# Logs
+logs/
+*.log
+
+# IDE specific files
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+
+# Documents
+.pdf
+
+checkpoints/
+eda/
+xgboost_train.py
+train_tf_to_pytorch.py
+tb_logs/
