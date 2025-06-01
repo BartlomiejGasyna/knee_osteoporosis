@@ -32,6 +32,7 @@ if response.status_code == 200:
     print(f"Model downloaded to {checkpoint_path}")
 else:
     print(f"Failed to download model: HTTP {response.status_code}")
+    quit()
 
 # Convert the model to ONNX format
 export_to_onnx(checkpoint_path, output_path)
