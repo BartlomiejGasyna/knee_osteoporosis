@@ -16,3 +16,4 @@ xgboost==3.0.2
 onnx==1.18.0
 onnxruntime-gpu==1.22.0
 tritonclient[http]
+tqdm~=4.67.1

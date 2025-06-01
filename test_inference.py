@@ -7,7 +7,7 @@ Comprehensive testing script for the deployed model
 import os
 import time
 import numpy as np
-from triton_client import TritonOsteoporosisClient
+from utils.triton_client import TritonOsteoporosisClient
 import matplotlib.pyplot as plt
 from PIL import Image
 
@@ -34,6 +34,14 @@ def performance_test(client, image_path, num_iterations=100):
     print(f"Max time: {times.max():.3f}s")
     print(f"95th percentile: {np.percentile(times, 95):.3f}s")
     print(f"Throughput: {1.0/times.mean():.1f} images/second")
+
+def predict_folder(client, folder_path):
+    """Predict all images in a folder"""
+    for file in os.listdir(folder_path):
+        if file.endswith(".jpg") or file.endswith(".jpeg"):
+            image_path = os.path.join(folder_path, file)
+            results = client.predict(image_path)
+            print(f"Predicted {file}: {results['predicted_class']}, confidence: {results['confidence']:.2f}")
 
 def batch_test(client, image_paths):
     """Test batch inference"""
@@ -92,10 +100,15 @@ def main():
         return
     
     # Test with a sample image (you'll need to provide a real image path)
-    test_image = "/home/gasyna/.cache/kagglehub/datasets/mohamedgobara/osteoporosis-database/versions/1/Osteoporosis Knee X-ray/normal/N13.jpg"  
+    test_image = "/home/gasyna/.cache/kagglehub/datasets/mohamedgobara/osteoporosis-database/versions/1/Osteoporosis Knee X-ray/normal/N17.jpg"  
     # test_image = "/home/gasyna/.cache/kagglehub/datasets/mohamedgobara/osteoporosis-database/versions/1/Osteoporosis Knee X-ray/osteoporosis/OS17.jpg"
     # test_image = "N14.jpg"
     # test_image = "N12.JPEG"
+
+    folder = "/home/gasyna/.cache/kagglehub/datasets/mohamedgobara/osteoporosis-database/versions/1/Osteoporosis Knee X-ray/osteopenia/"
+    
+    predict_folder(client, folder)
+
     if not os.path.exists(test_image):
         print(f"Please provide a valid test image path. Looking for: {test_image}")
         return
