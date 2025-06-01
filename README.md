@@ -79,6 +79,20 @@ This project implements a computer vision model to automatically classify osteop
 - **Osteopenia**: Mild bone density loss (precursor to osteoporosis)
 - **Osteoporosis**: Severe bone density loss
 
+## Overall Metrics
+- **Overall Accuracy**: 67%
+- **Test Set Size**: 36 samples
+
+### Per-Class Performance
+
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| Normal | 0.75 | 0.50 | 0.60 | 6 |
+| Osteopenia | 0.85 | 0.74 | 0.79 | 23 |
+| Osteoporosis | 0.33 | 0.57 | 0.42 | 7 |
+
+![alt text](assets/matrix.png)
+
 ## Dataset
 
 The project uses the [Osteoporosis Database](https://www.kaggle.com/datasets/mohamedgobara/osteoporosis-database/data) from Kaggle, which contains knee X-ray images labeled with osteoporosis severity levels.
