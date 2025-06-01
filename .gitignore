@@ -50,3 +50,5 @@ eda/
 xgboost_train.py
 train_tf_to_pytorch.py
 tb_logs/
+*.onnx
+*.ckpt
